@@ -7,11 +7,18 @@
     <title>Air In Pittsburgh</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <style>
+        #entry {
+            height: 100%;
+            background: url("images/entry image.png") no-repeat center center fixed;
+            background-size: cover;
+        }
+    </style>
 </head>
 
 <body>
-    <section class="hero is-success is-fullheight">
-        <div class="hero-body has-background-black-ter">
+    <section class="hero is-success is-fullheight" id="entry">
+        <div class="hero-body">
             <div class="container">
                 <h1 class="title has-text-centered">
                     Air Quality in Pittsburgh
@@ -32,8 +39,19 @@
                     <h2 class="title has-text-centered is-large">
                         Today's Air Quality
                     </h2>
+                    <h3 class="subtitle has-text-centered is-large">In Pittsburgh</h3>
                     <div name="airvisual_widget" key="w3hgWzn7hSkcyYDtf" class="has-text-centered"></div>
                     <script type="text/javascript" src="https://www.airvisual.com/scripts/widget_v2.0.js"></script>
+
+                    <body>
+                        <!-- 
+                        Air Quality Forecast Widget: Place this on your web page within the body tags. 
+                        This div may be placed within other divs or within table cells
+                         -->
+                        <div id="widget">
+                        </div>
+                        <!-- //end Air Quality Forecast Widget scripts -->
+                    </body>
                 </div>
                 <div class="column">
                     <h2 class="title has-text-centered is-large">
@@ -42,19 +60,29 @@
                     <div class="card">
                         <div class="card-content">
                             <p class="title">AQI</p>
-                            <p class="content">The AQI is an index for reporting daily air quality. It tells you how clean or polluted your air is, and what associated health effects might be a concern for you. The AQI focuses on health effects you may experience within a few hours or days after breathing polluted air. <br/></p>
+                            <p class="content">The AQI is an <strong>index for reporting daily air quality.</strong> It
+                                tells you how clean or polluted your air is, and what associated health effects might be
+                                a concern for you. The AQI focuses on health effects you may experience within a few
+                                hours or days after breathing polluted air. <br /></p>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-content">
                             <p class="title">PM2.5</p>
-                            <p class="content">PM2.5 refers to atmospheric particulate matter (PM) that have a diameter of less than 2.5 micrometers, which is about 3% the diameter of a human hair. Fine particles can come from various sources. They include power plants, motor vehicles, airplanes, residential wood burning, forest fires, agricultural burning, volcanic eruptions and dust storms.</p>
+                            <p class="content">PM2.5 refers to <strong>atmospheric particulate matter (PM)</strong> that
+                                have a diameter of less than 2.5 micrometers, which is about 3% the diameter of a human
+                                hair. Fine particles can come from various sources. They include power plants, motor
+                                vehicles, airplanes, residential wood burning, forest fires, agricultural burning,
+                                volcanic eruptions and dust storms.</p>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-content">
                             <p class="title">Humidity</p>
-                            <p class="content">Humidity is the concentration of water vapour present in the air. Water vapour, the gaseous state of water, is generally invisible to the human eye.[1] Humidity indicates the likelihood for precipitation, dew, or fog to be present.</p>
+                            <p class="content">Humidity is the <strong>concentration of water vapour present in the
+                                    air.</strong> Water vapour, the gaseous state of water, is generally invisible to
+                                the human eye. Humidity indicates the likelihood for precipitation, dew, or fog to be
+                                present.</p>
                         </div>
                     </div>
                 </div>
