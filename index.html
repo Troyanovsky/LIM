@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Air In Pittsburgh</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnify/2.3.3/css/magnify.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <style>
         #entry {
@@ -20,6 +21,10 @@
             background-size: cover;
         }
 
+        .magnify>.magnify-lens {
+            background-color: #fff !important;
+            /* Prevent adjacent image from appearing in lens */
+        }
     </style>
 </head>
 
@@ -110,7 +115,9 @@
             <div class="container">
                 <div class="columns is-vcentered has-background-grey">
                     <div class="column">
-                        <h2 class="title is-large">Today looks good, right? <br /><br />But it hasn't always been like this...
+                        <h2 class="title is-large">Today looks not bad, right? <br /><br />But it hasn't always been
+                            like
+                            this...
                         </h2>
                     </div>
                     <div class="column">
@@ -125,7 +132,72 @@
             </div>
         </div>
     </section>
+    <section class="hero is-fullheight">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns is-vcentered">
+                    <div class="column is-4">
+                        <h2 class="title has-text-centered">And we STILL have <br /><span
+                                style="opacity:0.4;">invisible</span> air pollution</h2>
+                        <div class="card">
+                            <div class="card-content">
+                                <p class="content">Pittsburgh is still consistently ranked in the <strong>top cities for
+                                        air
+                                        pollution</strong> by the American Lung Association in their State of the Air
+                                    reports.</p>
+                                <p class="content">In 2016, the region landed as the 8th worst in the country for
+                                    year-round
+                                    measures on <strong>fine particle pollution (or soot)</strong>, and the 14th worst
+                                    for
+                                    <strong>short-term particle pollution</strong> (the number of days with unhealthy
+                                    particle levels when air quality is especially dangerous). </p>
+                                <a href="https://cleanair.org/public-health/pittsburgh-air-pollution/" target="_blank"
+                                    class="is-pulled-right">Learn More</a>
+                                <p><br /></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-2"></div>
+                    <div class="column is-6">
+                        <h3 class="title is-5 has-text-centered">These particulate matters are <span
+                                style="opacity:0.4;">invisible</span> to the naked eye.
+                            <br />Hover your mouse over the image to explore where they can be.</h3>
+                        <figure class="image is-640x440">
+                            <img src="images\Zoom Small.png" class="zoom" data-magnify-src="images/Zoom Big.png">
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!--magnify scripts-->
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <![endif]-->
+    <!--[if IE 9]><!-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <!--<![endif]-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnify/2.3.3/js/jquery.magnify.js"></script>
+    <script>
+        var $zoom;
+        $(document).ready(function () {
+            // Initiate magnification powers
+            $zoom = $('.zoom').magnify({
+                afterLoad: function () {
+                    console.log('Magnification powers activated!');
+                }
+            });
+        });
+        $('html').on({
+            magnifystart: function () {
+                console.log('\'magnifystart\' event fired');
+            },
+            magnifyend: function () {
+                console.log('\'magnifyend\' event fired');
+            }
+        });
+    </script>
 </body>
 
 
