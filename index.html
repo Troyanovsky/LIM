@@ -7,6 +7,8 @@
     <title>Air In Pittsburgh</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnify/2.3.3/css/magnify.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@creativebulma/bulma-tooltip@1.0.2/dist/bulma-tooltip.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <style>
         #entry {
@@ -39,7 +41,7 @@
                     A Museum Exhibit about Air Quality
                 </h2>
                 <h2 class="subti has-text-centered">
-                    🡳 Scroll Down
+                    ↓ Scroll Down
                 </h2>
             </div>
         </div>
@@ -132,7 +134,7 @@
             </div>
         </div>
     </section>
-    <section class="hero is-fullheight">
+    <section class="hero is-medium">
         <div class="hero-body">
             <div class="container">
                 <div class="columns is-vcentered">
@@ -159,14 +161,60 @@
                     </div>
                     <div class="column is-2"></div>
                     <div class="column is-6">
-                        <h3 class="title is-5 has-text-centered">These particulate matters are <span
-                                style="opacity:0.4;">invisible</span> to the naked eye.
-                            <br />Hover your mouse over the image to explore where they can be.</h3>
-                        <figure class="image is-640x440">
-                            <img src="images\Zoom Small.png" class="zoom" data-magnify-src="images/Zoom Big.png">
-                        </figure>
+
+                        <h2 class="title has-text-centered">Main Pollutant NOW: <br /><span id="dominentpol"></span>
+                        </h2>
+
+                        <div class="columns">
+                            <div class="column">
+                                <div class="card">
+                                    <header class="card-header">
+                                        <p class="card-header-title">
+                                            PM<sub>2.5</sub> &nbsp AQI
+                                        </p>
+                                    </header>
+                                    <div class="card-content title has-text-centered" id="pm25">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="card">
+                                    <header class="card-header">
+                                        <p class="card-header-title">
+                                            O<sub>3</sub> &nbsp AQI
+                                        </p>
+                                    </header>
+                                    <div class="card-content title has-text-centered" id="o3">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="card">
+                                    <header class="card-header">
+                                        <p class="card-header-title">
+                                            NO<sub>2</sub> &nbsp AQI
+                                        </p>
+                                    </header>
+                                    <div class="card-content title has-text-centered" id="no2">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="is-size-7 is-pulled-right">*Real-time data from <a href="https://aqicn.org/sources/" target="_blank">The World Air Quality Project</a></p>
                     </div>
                 </div>
+            </div>
+    </section>
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container">
+                <h2 class="title has-text-centered">These air pollutants are <span style="opacity:0.4;">invisible</span>
+                    to the naked eye.</h2>
+                <h3 class="subtitle has-text-centered">Hover your mouse over the image to explore where they can be.</h3>
+
+                <figure class="image is-640x440 has-text-centered">
+                    <img src="images\Zoom Small.png" class="zoom" data-magnify-src="images/Zoom Big.png">
+                </figure>
             </div>
         </div>
     </section>
@@ -198,6 +246,43 @@
             }
         });
     </script>
+
+    <!--pollutant aqi scripts-->
+    <script>
+        $(document).ready(function () {
+            console.log("ready!");
+            $.getJSON("https://api.waqi.info/feed/Pittsburgh/?token=b3230be71fcb41b00461eee72688b626cc2674ba", function (result) {
+
+                if (!result || (result.status != "ok")) {
+                    document.getElementById("dominentpol").innerHTML = "Sorry, something wrong happend";
+                    document.getElementById("pm25").innerHTML = "Error";
+                    document.getElementById('o3').innerHTML = "Error";
+                    document.getElementById("no2").innerHTML = "Error";
+                    return
+                } else if (result.status == "ok") {
+                    switch (result.data.dominentpol) {
+                        case "pm25":
+
+                            document.getElementById("dominentpol").innerHTML = "PM<sub>2.5</sub>";
+                            break;
+                        case "o3":
+                            document.getElementById("dominentpol").innerHTML = "Ozone";
+                            break;
+                        case "no2":
+                            document.getElementById("dominentpol").innerHTML = "Nitrogen Dioxide";
+                            break;
+                    }
+                    document.getElementById("pm25").innerHTML = result.data.iaqi.pm25.v;
+                    document.getElementById('o3').innerHTML = result.data.iaqi.o3.v;
+                    document.getElementById("no2").innerHTML = result.data.iaqi.no2.v;
+                }
+
+            });
+        });
+
+    </script>
+
+
 </body>
 
 
