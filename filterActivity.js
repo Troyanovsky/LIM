@@ -87,9 +87,24 @@ function changeFilter() {
     var totalValue = emissionValue + energyValue + transportValue + burnValue;
     console.log(totalValue);
     var percentage = (1 - totalValue/12)*100;
+
+    var AQI = Math.round(10 + 200*percentage/100);
+    var AQIText = document.getElementById("calculatedAQI")
+
     var filterTag = `grayscale(${percentage}%)`;
     console.log(filterTag);
     document.getElementById("actionBackground").style.filter = filterTag;
+    AQIText.innerHTML = AQI;
+    if (AQI < 50) {
+        console.log("green")
+        AQIText.style.color = "#008000";
+    } else if ((AQI >= 50) && (AQI < 100)) {
+        AQIText.style.color = "gold";
+    } else if ((AQI >= 100) && (AQI < 150)) {
+        AQIText.style.color = "orange";
+    } else if ((AQI >= 150) && (AQI < 200)) {
+        AQIText.style.color = "red";
+    }
 }
 
 document.addEventListener('DOMContentLoaded', function() {
