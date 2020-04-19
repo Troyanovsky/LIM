@@ -91,3 +91,12 @@ function changeFilter() {
     console.log(filterTag);
     document.getElementById("actionBackground").style.filter = filterTag;
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log("DOM Loaded");
+    changeEmission(document.getElementById("govEmissionPolicyRange").value);
+    changeEnergy(document.getElementById("energySourceRange").value);
+    changeCars(document.getElementById("transportationRange").value);
+    changeBurn(document.getElementById("burningRange").value);
+    changeFilter();
+ }, false);
