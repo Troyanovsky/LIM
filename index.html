@@ -10,6 +10,7 @@
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@creativebulma/bulma-tooltip@1.0.2/dist/bulma-tooltip.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="filterActivity.js"></script>
     <style>
         #entry {
             height: 100%;
@@ -27,10 +28,46 @@
             background-color: #fff !important;
             /* Prevent adjacent image from appearing in lens */
         }
+
+
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 15px;
+            border-radius: 5px;
+            background: #d3d3d3;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+        }
+
+        .slider:hover {
+            opacity: 1;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
+    <!--entry: today's air-->
     <section class="hero is-success is-fullheight" id="entry">
         <div class="hero-body">
             <div class="container">
@@ -57,15 +94,15 @@
                     <div name="airvisual_widget" key="w3hgWzn7hSkcyYDtf" class="has-text-centered"></div>
                     <script type="text/javascript" src="https://www.airvisual.com/scripts/widget_v2.0.js"></script>
 
-                    <body>
-                        <!-- 
+
+                    <!-- 
                         Air Quality Forecast Widget: Place this on your web page within the body tags. 
                         This div may be placed within other divs or within table cells
                          -->
-                        <div id="widget">
-                        </div>
-                        <!-- //end Air Quality Forecast Widget scripts -->
-                    </body>
+                    <div id="widget">
+                    </div>
+                    <!-- //end Air Quality Forecast Widget scripts -->
+
                 </div>
                 <div class="column">
                     <h2 class="title has-text-centered is-large">
@@ -112,6 +149,7 @@
             </div>
         </div>
     </section>
+    <!--history-->
     <section class="hero is-success is-fullheight" id="history">
         <div class="hero-body">
             <div class="container">
@@ -134,6 +172,7 @@
             </div>
         </div>
     </section>
+    <!--current pollution-->
     <section class="hero is-medium">
         <div class="hero-body">
             <div class="container">
@@ -206,17 +245,149 @@
                 </div>
             </div>
     </section>
+    <!--magnify activity-->
     <section class="hero is-small">
         <div class="hero-body">
             <div class="container">
                 <h2 class="title has-text-centered">These air pollutants are <span style="opacity:0.4;">invisible</span>
                     to the naked eye.</h2>
-                <h3 class="subtitle has-text-centered">Hover your mouse over the image to explore where they can be.
+                <h3 class="subtitle has-text-centered"><strong>Hover your mouse</strong> over the image to explore where
+                    they can be.
                 </h3>
 
                 <figure class="image is-640x440 has-text-centered">
                     <img src="images\Zoom Small.png" class="zoom" data-magnify-src="images/Zoom Big.png">
                 </figure>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero is-light is-bold is-fullheight">
+        <div class="hero-body">
+            <div class="container">
+                <h2 class="title has-text-centered">So...How can our actions change the air?</h2>
+                <h3 class="subtitle has-text-centered">What can we do to make the air better?</h3>
+            </div>
+        </div>
+    </section>
+
+    <!--actions filter activity-->
+    <section class="hero is-fullheight">
+        <div class="hero-body">
+            <div class="container">
+                <h2 class="title has-text-centered">Explore how the different actions will affect our air quality</h2>
+                <p class="has-text-centered">These actions are on three levels: <strong>government, community, and individual.</strong> <br/>Can you change the different actions to make Pittsburgh's air cleaner?<br/><br/></br.></p>
+                <div class="columns is-vcentered">
+                    <div class="column is-one-thirds">
+
+                        <!--one action-->
+                        <div class="container">
+                            <p class="has-text-centered has-text-weight-bold">Policy on Industry Emission</p>
+                            <div class="columns is-vcentered is-mobile">
+                                <div class="column is-one-third ">
+                                    <p class="has-text-centered">Loose</p>
+                                </div>
+                                <div class="column is-one-third ">
+                                    <input type="range" min="1" max="3" value="2" class="slider"
+                                        id="govEmissionPolicyRange"
+                                        oninput="changeEmission(this.value);changeFilter();">
+                                </div>
+                                <div class="column is-one-third ">
+                                    <p class="has-text-centered">Strict</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--one action-->
+                        <div class="container">
+                            <p class="has-text-centered has-text-weight-bold">Energy Source</p>
+                            <div class="columns is-vcentered is-mobile">
+                                <div class="column is-one-third ">
+                                    <p class="has-text-centered">Fossil Fuels</p>
+                                </div>
+                                <div class="column is-one-third ">
+                                    <input type="range" min="1" max="3" value="2" class="slider" id="energySourceRange"
+                                        oninput="changeEnergy(this.value);changeFilter();">
+                                </div>
+                                <div class="column is-one-third ">
+                                    <p class="has-text-centered">Renewables</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--one action-->
+                        <div class="container">
+                            <p class="has-text-centered has-text-weight-bold">Transportation</p>
+                            <div class="columns is-vcentered is-mobile">
+                                <div class="column is-one-third ">
+                                    <p class="has-text-centered">Private Cars</p>
+                                </div>
+                                <div class="column is-one-third ">
+                                    <input type="range" min="1" max="3" value="2" class="slider"
+                                        id="transportationRange" oninput="changeCars(this.value);changeFilter();">
+                                </div>
+                                <div class="column is-one-third ">
+                                    <p class="has-text-centered">Public Transport</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--one action-->
+                        <div class="container">
+                            <p class="has-text-centered has-text-weight-bold">Wood Burning</p>
+                            <div class="columns is-vcentered is-mobile">
+                                <div class="column is-one-third ">
+                                    <p class="has-text-centered">More Buring</p>
+                                </div>
+                                <div class="column is-one-third ">
+                                    <input type="range" min="1" max="3" value="2" class="slider" id="burningRange"
+                                        oninput="changeBurn(this.value);changeFilter();">
+                                </div>
+                                <div class="column is-one-third ">
+                                    <p class="has-text-centered">Less Burning</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="column is-two-thirds">
+                        <div class="container">
+                            <figure class="image is-800x500 has-text-centered">
+                                <img src="images\filter_activity\background.png" id="actionBackground">
+
+                                <!--emission overlays-->
+                                <img src="images\filter_activity\emission-1.png" class="is-overlay" id="emission-1"
+                                    style="visibility: hidden;">
+                                <img src="images\filter_activity\emission-2.png" class="is-overlay" id="emission-2"
+                                    style="visibility: hidden;">
+                                <img src="images\filter_activity\emission-3.png" class="is-overlay" id="emission-3"
+                                    style="visibility: hidden;">
+                                <!--energy overlays-->
+                                <img src="images\filter_activity\energy-1.png" class="is-overlay" id="energy-1"
+                                    style="visibility: hidden;">
+                                <img src="images\filter_activity\energy-2.png" class="is-overlay" id="energy-2"
+                                    style="visibility: hidden;">
+                                <img src="images\filter_activity\energy-3.png" class="is-overlay" id="energy-3"
+                                    style="visibility: hidden;">
+                                <!--car overlays-->
+                                <img src="images\filter_activity\car-1.png" class="is-overlay" id="car-1"
+                                    style="visibility: hidden;">
+                                <img src="images\filter_activity\car-2.png" class="is-overlay" id="car-2"
+                                    style="visibility: hidden;">
+                                <img src="images\filter_activity\car-3.png" class="is-overlay" id="car-3"
+                                    style="visibility: hidden;">
+                                <!--burn overlays-->
+                                <img src="images\filter_activity\burn-1.png" class="is-overlay" id="burn-1"
+                                    style="visibility: hidden;">
+                                <img src="images\filter_activity\burn-2.png" class="is-overlay" id="burn-2"
+                                    style="visibility: hidden;">
+                                <img src="images\filter_activity\burn-3.png" class="is-overlay" id="burn-3"
+                                    style="visibility: hidden;">
+                            </figure>
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
