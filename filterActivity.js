@@ -94,6 +94,7 @@ function changeFilter() {
     var filterTag = `grayscale(${percentage}%)`;
     console.log(filterTag);
     document.getElementById("filter-1").style.opacity = percentage/100;
+    console.log("opacity", document.getElementById("filter-1").style.opacity);
     document.getElementById("actionBackground").style.filter = filterTag;
     AQIText.innerHTML = AQI;
     if (AQI < 50) {
