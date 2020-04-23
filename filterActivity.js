@@ -89,10 +89,11 @@ function changeFilter() {
     var percentage = (1 - totalValue/12)*100;
 
     var AQI = Math.round(10 + 200*percentage/100);
-    var AQIText = document.getElementById("calculatedAQI")
+    var AQIText = document.getElementById("calculatedAQI");
 
     var filterTag = `grayscale(${percentage}%)`;
     console.log(filterTag);
+    document.getElementById("filter-1").style.opacity = percentage/100;
     document.getElementById("actionBackground").style.filter = filterTag;
     AQIText.innerHTML = AQI;
     if (AQI < 50) {
