@@ -119,9 +119,10 @@
                             <p class="title">AQI</p>
                             <p class="content">The AQI is an <strong>index for reporting daily air quality.</strong> It
                                 tells you how clean or polluted your air is, and what associated health effects might be
-                                a concern for you. The AQI focuses on health effects you may experience within a few
-                                hours or days after breathing polluted air.</p>
-                            <a href="https://www.airnow.gov/index.cfm?action=ani.aniaqi" class="is-pulled-right"
+                                a concern for you. <u>The higher the AQI value, the greater the level of air pollution
+                                    and
+                                    the greater the health concern.</u> </p>
+                            <a href="https://www.airnow.gov/aqi/aqi-basics/" class="is-pulled-right"
                                 target="_blank">Learn More</a>
                             <p><br /></p>
                         </div>
@@ -129,11 +130,12 @@
                     <div class="card">
                         <div class="card-content">
                             <p class="title">PM2.5</p>
-                            <p class="content">PM2.5 refers to <strong>atmospheric particulate matter (PM)</strong> that
+                            <p class="content">The number in the middle refers to the concentration of PM2.5. It's
+                                <strong>atmospheric particulate matter (PM)</strong> that
                                 have a diameter of less than 2.5 micrometers, which is about 3% the diameter of a human
-                                hair. Fine particles can come from various sources. They include power plants, motor
-                                vehicles, airplanes, residential wood burning, forest fires, agricultural burning,
-                                volcanic eruptions and dust storms.</p>
+                                hair. Fine particles can come from various sources, including power plants,
+                                transportation, wood burning etc. <u>They may cause health problems like decreased lung
+                                    function, increased respiratory symptoms, heart attacks etc.</u></p>
                             <a href="https://blissair.com/what-is-pm-2-5.htm" class="is-pulled-right"
                                 target="_blank">Learn More</a>
                             <p><br /></p>
@@ -145,7 +147,8 @@
                             <p class="content">Humidity is the <strong>concentration of water vapour present in the
                                     air.</strong> Water vapour, the gaseous state of water, is generally invisible to
                                 the human eye. Humidity indicates the likelihood for precipitation, dew, or fog to be
-                                present.</p>
+                                present. <u>Higher humidity can increase the levels of noxious chemicals in the air,
+                                    which may include ozone and formaldehyde.</u></p>
                             <a href="https://www.wikiwand.com/en/Humidity" class="is-pulled-right" target="_blank">Learn
                                 More</a>
                             <p><br /></p>
@@ -419,6 +422,18 @@
         </div>
     </section>
 
+    <!--actions discussion-->
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container">
+                <h2 class="title has-text-centered">So what ACTIONS do you think you can take to help reduce air
+                    pollutions around us?</h2>
+                <h3 class="subtitle has-text-centered">Share in the discussion down below!</h3>
+                <div class="commentbox"></div>
+            </div>
+        </div>
+    </section>
+
     <!--magnify scripts-->
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -479,10 +494,15 @@
 
             });
         });
-
     </script>
+    <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js">
+        import commentBox from 'commentbox.io';
+        // or
+        const commentBox = require('commentbox.io');
+        // or if using the CDN, it will be available as a global "commentBox" variable.
 
-
+        commentBox('5763369957064704-proj');
+    </script>
 </body>
 
 <footer class="footer">
