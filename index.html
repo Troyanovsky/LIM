@@ -7,10 +7,15 @@
     <title>Air In Pittsburgh</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnify/2.3.3/css/magnify.css">
+    <link rel="stylesheet" href="https://unpkg.com/buefy/dist/buefy.min.css">
+    <!-- 
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@creativebulma/bulma-tooltip@1.0.2/dist/bulma-tooltip.min.css">
+-->
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <script src="filterActivity.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script src="https://unpkg.com/buefy/dist/buefy.min.js"></script>
     <style>
         #entry {
             height: 100%;
@@ -180,6 +185,16 @@
                 </div>
             </div>
         </div>
+    </section>
+    <section class="has-background-dark">
+        <div id="app" class="container">
+            <b-carousel>
+                <b-carousel-item v-for="(carousel, i) in carousels" :key="i">
+                    <span class="image is-1230x500">
+                        <img v-bind:src="carousel.source">
+                    </span>
+                </b-carousel-item>
+            </b-carousel>
     </section>
     <!--current pollution-->
     <section class="hero is-medium">
@@ -426,22 +441,22 @@
     <section class="hero is-small">
         <div class="hero-body">
             <div class="container">
-                <h2 class="title has-text-centered">So what ACTIONS do you think you can take <br/> to help reduce air
+                <h2 class="title has-text-centered">So what ACTIONS do you think you can take <br /> to help reduce air
                     pollutions around us?</h2>
                 <h3 class="subtitle has-text-centered">Share in the discussion down below!</h3>
                 <div id="wpac-comment"></div>
                 <script type="text/javascript">
-                wpac_init = window.wpac_init || [];
-                wpac_init.push({widget: 'Comment', id: 24853});
-                (function() {
-                    if ('WIDGETPACK_LOADED' in window) return;
-                    WIDGETPACK_LOADED = true;
-                    var mc = document.createElement('script');
-                    mc.type = 'text/javascript';
-                    mc.async = true;
-                    mc.src = 'https://embed.widgetpack.com/widget.js';
-                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
-                })();
+                    wpac_init = window.wpac_init || [];
+                    wpac_init.push({ widget: 'Comment', id: 24853 });
+                    (function () {
+                        if ('WIDGETPACK_LOADED' in window) return;
+                        WIDGETPACK_LOADED = true;
+                        var mc = document.createElement('script');
+                        mc.type = 'text/javascript';
+                        mc.async = true;
+                        mc.src = 'https://embed.widgetpack.com/widget.js';
+                        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+                    })();
                 </script>
                 <a href="https://widgetpack.com" class="wpac-cr">Comments System WIDGET PACK</a>
             </div>
@@ -508,6 +523,28 @@
 
             });
         });
+    </script>
+    <!--history carousel scripts-->
+    <script>
+        const example = {
+            data() {
+                return {
+                    carousels: [
+                        { text: 'Slide 1', source: "images/history/1900s.png" },
+                        { text: 'Slide 2', source: "images/history/1910s.png" },
+                        { text: 'Slide 3', source: "images/history/1940s.png" },
+                        { text: 'Slide 4', source: "images/history/1945.png" },
+                        { text: 'Slide 5', source: "images/history/1970s.png" },
+                        { text: 'Slide 6', source: "images/history/1990s.png" },
+                        { text: 'Slide 7', source: "images/history/2020.png" }
+                    ]
+                }
+            }
+        }
+
+        const app = new Vue(example)
+        app.$mount('#app')
+
     </script>
 
 </body>
